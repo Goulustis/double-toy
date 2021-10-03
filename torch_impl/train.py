@@ -33,11 +33,11 @@ def train(num_epochs=30, batch_size = 128, use_cuda=True):
     optimizer = torch.optim.Adam(model.parameters())
 
     losses = []
-    tot_loss = 0
+    
     num_iter = len(tr_set)//batch_size
     for epoch in range(num_epochs):
         print("==================", epoch, "==============")
-
+        tot_loss = 0
         for x, x_der in tqdm(tr_loader, total = num_iter):
             if use_cuda:
                 x, x_der = x.cuda(), x_der.cuda()
